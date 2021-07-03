@@ -1,0 +1,14 @@
+(head
+   (meta charset="UTF-8")
+   (meta name="viewport" content="width=device-width, initial-scale=1.0")
+   
+   (title "Tester")
+)
+(body
+   (p 'Fingerprinting...')
+
+   (import "https://cdn.jsdelivr.net/npm/@fingerprintjs/fingerprintjs@3/dist/fp.min.js")
+   // Polyfill
+    (import "https://cdn.jsdelivr.net/npm/broadcastchannel-polyfill@1.0.1/index.min.js")
+   '<script src="./frame.js"></script>'
+)

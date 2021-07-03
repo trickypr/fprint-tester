@@ -1,0 +1,56 @@
+(head
+   (meta charset="UTF-8")
+   (meta name="viewport" content="width=device-width, initial-scale=1.0")
+   
+   (title "fprint")
+)
+(body
+   (h1 "FPrint benchmarker")
+   (p 
+        "Lets benchmark how resistive your browser is to fingerprinting! To ensure"
+        "your fingerprint cannot be used to track you, ensure that most objects used"
+        "for fingerprinting differ between webpages and thus iframes"
+    )
+
+   (iframe id="fpframe")
+
+   (div id="fp-result" class="fp-result"
+        (h1 id="stable" "Checking to see if you have a stable fingerprint")
+        (p id="audio" "Audio: ...")
+        (p id="canvas" "Canvas: ...")
+        (p id="colorDepth" "Color depth: ...")
+        (p id="colorGaumut" "Color gamut: ...")
+        (p id="contrast" "Contrast: ...")
+        (p id="cookiesEnabled" "Cookies enabled: ...")
+        (p id="cpuClass" "CPU class: ...")
+        (p id="deviceMemory" "Device memory: ...")
+        (p id="domBlockers" "DOM blockers: ...")
+        (p id="fontPreferences" "Font preferences: ...")
+        (p id="fonts" "Fonts: ...")
+        (p id="forcedColors" "Forced colors: ...")
+        (p id="hardwareConcurrency" "Hardware concurrency: ...")
+        (p id="hdr" "HDR: ...")
+        (p id="indexedDB" "Indexed DB: ...")
+        (p id="invertedColors" "Inverted colors: ...")
+        (p id="languages" "Languages: ...")
+        (p id="localStorage" "Local storage: ...")
+        (p id="math" "Math: ...")
+        (p id="monochrome" "Monochrome: ...")
+        (p id="osCpu" "Operating system CPU: ...")
+        (p id="platform" "Platform: ...")
+        (p id="plugins" "Plugins: ...")
+        (p id="reducedMotion" "Reduced motion: ...")
+        (p id="screenFrame" "Screen frame: ...")
+        (p id="screenResolution" "Screen resolution: ...")
+        (p id="sessionStorage" "Session storage: ...")
+        (p id="timezone" "Timezone: ...")
+        (p id="touchSupport" "Touch support: ...")
+        (p id="vendor" "Vendor: ...")
+        (p id="vendorFlavours" "Vendor flavours: ...")
+   )
+
+   // Polyfill
+    (import "https://cdn.jsdelivr.net/npm/broadcastchannel-polyfill@1.0.1/index.min.js")
+    // TODO: Replace this with an import once they are fixed
+   '<script src="./index.js"></script>'
+)
