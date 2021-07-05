@@ -8,14 +8,36 @@ frame.src = "/frame.html";
 let data = [];
 
 fpChannel.onmessage = (e) => {
-  console.log(e);
-
   data.push(e.data);
 
   // If we don't have enough data, create another popup
   if (data.length != 2) frame.contentWindow.location.reload();
   else {
-    console.log(data);
+    console.clear();
+
+    console.log(
+      "%cHello fellow developer",
+      "font-size: 3em;font-weight:bold;font-family:sans-serif;"
+    );
+    console.log(
+      "%cFor your convenience, below is an object containing the output from one " +
+        "of the two fingerprints performed on your browser. The easiest method to" +
+        "prevent fingerprinting is to make these properties vary between page loads." +
+        " This is the method used by both tor browser and Dot Browser to reduce " +
+        "the data collected by fingerprinters",
+      "font-family: sans-serif;"
+    );
+
+    console.log(data[0].components);
+
+    console.log(
+      "%cUnder the hood, this test uses fingerprint.js, an open source fingerprinting " +
+        "library. It being a fingerprinting library isn't great, but it means we " +
+        "can easily examine how it collects each of these data points on github: " +
+        "https://github.com/fingerprintjs/fingerprintjs/tree/master/src/sources",
+      "font-family: sans-serif;"
+    );
+
     frame.remove();
     report();
   }
@@ -88,39 +110,39 @@ function report() {
 
   // Audio
   if (deepEqual(data[0].components.audio, data[1].components.audio)) {
-    audioEl.innerHTML = "Audio: <b>Same</b>";
+    audioEl.innerHTML = "Audio: <b>Same ❌</b>";
   } else {
-    audioEl.innerHTML = "Audio: <b>Different</b>";
+    audioEl.innerHTML = "Audio: <b>Different ✅</b>";
   }
 
   // Canvas
   if (deepEqual(data[0].components.canvas, data[1].components.canvas)) {
-    canvasEl.innerHTML = "Canvas: <b>Same</b>";
+    canvasEl.innerHTML = "Canvas: <b>Same ❌</b>";
   } else {
-    canvasEl.innerHTML = "Canvas: <b>Different</b>";
+    canvasEl.innerHTML = "Canvas: <b>Different ✅</b>";
   }
 
   // Color Depth
   if (deepEqual(data[0].components.colorDepth, data[1].components.colorDepth)) {
-    colorDepthEl.innerHTML = "Color Depth: <b>Same</b>";
+    colorDepthEl.innerHTML = "Color Depth: <b>Same ❌</b>";
   } else {
-    colorDepthEl.innerHTML = "Color Depth: <b>Different</b>";
+    colorDepthEl.innerHTML = "Color Depth: <b>Different ✅</b>";
   }
 
   // Color Gaumut
   if (
     deepEqual(data[0].components.colorGaumut, data[1].components.colorGaumut)
   ) {
-    colorGaumutEl.innerHTML = "Color Gaumut: <b>Same</b>";
+    colorGaumutEl.innerHTML = "Color Gaumut: <b>Same ❌</b>";
   } else {
-    colorGaumutEl.innerHTML = "Color Gaumut: <b>Different</b>";
+    colorGaumutEl.innerHTML = "Color Gaumut: <b>Different ✅</b>";
   }
 
   // Contrast
   if (deepEqual(data[0].components.contrast, data[1].components.contrast)) {
-    contrastEl.innerHTML = "Contrast: <b>Same</b>";
+    contrastEl.innerHTML = "Contrast: <b>Same ❌</b>";
   } else {
-    contrastEl.innerHTML = "Contrast: <b>Different</b>";
+    contrastEl.innerHTML = "Contrast: <b>Different ✅</b>";
   }
 
   // Cookies Enabled
@@ -130,34 +152,34 @@ function report() {
       data[1].components.cookiesEnabled
     )
   ) {
-    cookiesEnabledEl.innerHTML = "Cookies Enabled: <b>Same</b>";
+    cookiesEnabledEl.innerHTML = "Cookies Enabled: <b>Same ❌</b>";
   } else {
-    cookiesEnabledEl.innerHTML = "Cookies Enabled: <b>Different</b>";
+    cookiesEnabledEl.innerHTML = "Cookies Enabled: <b>Different ✅</b>";
   }
 
   // CPU Class
   if (deepEqual(data[0].components.cpuClass, data[1].components.cpuClass)) {
-    cpuClassEl.innerHTML = "CPU Class: <b>Same</b>";
+    cpuClassEl.innerHTML = "CPU Class: <b>Same ❌</b>";
   } else {
-    cpuClassEl.innerHTML = "CPU Class: <b>Different</b>";
+    cpuClassEl.innerHTML = "CPU Class: <b>Different ✅</b>";
   }
 
   // Device Memory
   if (
     deepEqual(data[0].components.deviceMemory, data[1].components.deviceMemory)
   ) {
-    deviceMemoryEl.innerHTML = "Device Memory: <b>Same</b>";
+    deviceMemoryEl.innerHTML = "Device Memory: <b>Same ❌</b>";
   } else {
-    deviceMemoryEl.innerHTML = "Device Memory: <b>Different</b>";
+    deviceMemoryEl.innerHTML = "Device Memory: <b>Different ✅</b>";
   }
 
   // DOM Blockers
   if (
     deepEqual(data[0].components.domBlockers, data[1].components.domBlockers)
   ) {
-    domBlockersEl.innerHTML = "DOM Blockers: <b>Same</b>";
+    domBlockersEl.innerHTML = "DOM Blockers: <b>Same ❌</b>";
   } else {
-    domBlockersEl.innerHTML = "DOM Blockers: <b>Different</b>";
+    domBlockersEl.innerHTML = "DOM Blockers: <b>Different ✅</b>";
   }
 
   // Font Preferences
@@ -167,25 +189,25 @@ function report() {
       data[1].components.fontPreferences
     )
   ) {
-    fontPreferencesEl.innerHTML = "Font Preferences: <b>Same</b>";
+    fontPreferencesEl.innerHTML = "Font Preferences: <b>Same ❌</b>";
   } else {
-    fontPreferencesEl.innerHTML = "Font Preferences: <b>Different</b>";
+    fontPreferencesEl.innerHTML = "Font Preferences: <b>Different ✅</b>";
   }
 
   // Fonts
   if (deepEqual(data[0].components.fonts, data[1].components.fonts)) {
-    fontsEl.innerHTML = "Fonts: <b>Same</b>";
+    fontsEl.innerHTML = "Fonts: <b>Same ❌</b>";
   } else {
-    fontsEl.innerHTML = "Fonts: <b>Different</b>";
+    fontsEl.innerHTML = "Fonts: <b>Different ✅</b>";
   }
 
   // Forced Colors
   if (
     deepEqual(data[0].components.forcedColors, data[1].components.forcedColors)
   ) {
-    forcedColorsEl.innerHTML = "Forced Colors: <b>Same</b>";
+    forcedColorsEl.innerHTML = "Forced Colors: <b>Same ❌</b>";
   } else {
-    forcedColorsEl.innerHTML = "Forced Colors: <b>Different</b>";
+    forcedColorsEl.innerHTML = "Forced Colors: <b>Different ✅</b>";
   }
 
   // Hardware Concurrency
@@ -195,23 +217,24 @@ function report() {
       data[1].components.hardwareConcurrency
     )
   ) {
-    hardwareConcurrencyEl.innerHTML = "Hardware Concurrency: <b>Same</b>";
+    hardwareConcurrencyEl.innerHTML = "Hardware Concurrency: <b>Same ❌</b>";
   } else {
-    hardwareConcurrencyEl.innerHTML = "Hardware Concurrency: <b>Different</b>";
+    hardwareConcurrencyEl.innerHTML =
+      "Hardware Concurrency: <b>Different ✅</b>";
   }
 
   // HDR
   if (deepEqual(data[0].components.hdr, data[1].components.hdr)) {
-    hdrEl.innerHTML = "HDR: <b>Same</b>";
+    hdrEl.innerHTML = "HDR: <b>Same ❌</b>";
   } else {
-    hdrEl.innerHTML = "HDR: <b>Different</b>";
+    hdrEl.innerHTML = "HDR: <b>Different ✅</b>";
   }
 
   // IndexedDB
   if (deepEqual(data[0].components.indexedDb, data[1].components.indexedDb)) {
-    indexedDbEl.innerHTML = "IndexedDB: <b>Same</b>";
+    indexedDbEl.innerHTML = "IndexedDB: <b>Same ❌</b>";
   } else {
-    indexedDbEl.innerHTML = "IndexedDB: <b>Different</b>";
+    indexedDbEl.innerHTML = "IndexedDB: <b>Different ✅</b>";
   }
 
   // Inverted Colors
@@ -221,60 +244,60 @@ function report() {
       data[1].components.invertedColors
     )
   ) {
-    invertedColorsEl.innerHTML = "Inverted Colors: <b>Same</b>";
+    invertedColorsEl.innerHTML = "Inverted Colors: <b>Same ❌</b>";
   } else {
-    invertedColorsEl.innerHTML = "Inverted Colors: <b>Different</b>";
+    invertedColorsEl.innerHTML = "Inverted Colors: <b>Different ✅</b>";
   }
 
   // Languages
   if (deepEqual(data[0].components.languages, data[1].components.languages)) {
-    languagesEl.innerHTML = "Languages: <b>Same</b>";
+    languagesEl.innerHTML = "Languages: <b>Same ❌</b>";
   } else {
-    languagesEl.innerHTML = "Languages: <b>Different</b>";
+    languagesEl.innerHTML = "Languages: <b>Different ✅</b>";
   }
 
   // Local Storage
   if (
     deepEqual(data[0].components.localStorage, data[1].components.localStorage)
   ) {
-    localStorageEl.innerHTML = "Local Storage: <b>Same</b>";
+    localStorageEl.innerHTML = "Local Storage: <b>Same ❌</b>";
   } else {
-    localStorageEl.innerHTML = "Local Storage: <b>Different</b>";
+    localStorageEl.innerHTML = "Local Storage: <b>Different ✅</b>";
   }
 
   // Math
   if (deepEqual(data[0].components.math, data[1].components.math)) {
-    mathEl.innerHTML = "Math: <b>Same</b>";
+    mathEl.innerHTML = "Math: <b>Same ❌</b>";
   } else {
-    mathEl.innerHTML = "Math: <b>Different</b>";
+    mathEl.innerHTML = "Math: <b>Different ✅</b>";
   }
 
   // Monochrome
   if (deepEqual(data[0].components.monochrome, data[1].components.monochrome)) {
-    monochromeEl.innerHTML = "Monochrome: <b>Same</b>";
+    monochromeEl.innerHTML = "Monochrome: <b>Same ❌</b>";
   } else {
-    monochromeEl.innerHTML = "Monochrome: <b>Different</b>";
+    monochromeEl.innerHTML = "Monochrome: <b>Different ✅</b>";
   }
 
   // OS CPU
   if (deepEqual(data[0].components.osCpu, data[1].components.osCpu)) {
-    osCpuEl.innerHTML = "OS CPU: <b>Same</b>";
+    osCpuEl.innerHTML = "OS CPU: <b>Same ❌</b>";
   } else {
-    osCpuEl.innerHTML = "OS CPU: <b>Different</b>";
+    osCpuEl.innerHTML = "OS CPU: <b>Different ✅</b>";
   }
 
   // Platform
   if (deepEqual(data[0].components.platform, data[1].components.platform)) {
-    platformEl.innerHTML = "Platform: <b>Same</b>";
+    platformEl.innerHTML = "Platform: <b>Same ❌</b>";
   } else {
-    platformEl.innerHTML = "Platform: <b>Different</b>";
+    platformEl.innerHTML = "Platform: <b>Different ✅</b>";
   }
 
   // Plugins
   if (deepEqual(data[0].components.plugins, data[1].components.plugins)) {
-    pluginsEl.innerHTML = "Plugins: <b>Same</b>";
+    pluginsEl.innerHTML = "Plugins: <b>Same ❌</b>";
   } else {
-    pluginsEl.innerHTML = "Plugins: <b>Different</b>";
+    pluginsEl.innerHTML = "Plugins: <b>Different ✅</b>";
   }
 
   // Reduced Motion
@@ -284,18 +307,18 @@ function report() {
       data[1].components.reducedMotion
     )
   ) {
-    reducedMotionEl.innerHTML = "Reduced Motion: <b>Same</b>";
+    reducedMotionEl.innerHTML = "Reduced Motion: <b>Same ❌</b>";
   } else {
-    reducedMotionEl.innerHTML = "Reduced Motion: <b>Different</b>";
+    reducedMotionEl.innerHTML = "Reduced Motion: <b>Different ✅</b>";
   }
 
   // Screen Frame
   if (
     deepEqual(data[0].components.screenFrame, data[1].components.screenFrame)
   ) {
-    screenFrameEl.innerHTML = "Screen Frame: <b>Same</b>";
+    screenFrameEl.innerHTML = "Screen Frame: <b>Same ❌</b>";
   } else {
-    screenFrameEl.innerHTML = "Screen Frame: <b>Different</b>";
+    screenFrameEl.innerHTML = "Screen Frame: <b>Different ✅</b>";
   }
 
   // Screen Resolution
@@ -305,9 +328,9 @@ function report() {
       data[1].components.screenResolution
     )
   ) {
-    screenResolutionEl.innerHTML = "Screen Resolution: <b>Same</b>";
+    screenResolutionEl.innerHTML = "Screen Resolution: <b>Same ❌</b>";
   } else {
-    screenResolutionEl.innerHTML = "Screen Resolution: <b>Different</b>";
+    screenResolutionEl.innerHTML = "Screen Resolution: <b>Different ✅</b>";
   }
 
   // Session Storage
@@ -317,32 +340,32 @@ function report() {
       data[1].components.sessionStorage
     )
   ) {
-    sessionStorageEl.innerHTML = "Session Storage: <b>Same</b>";
+    sessionStorageEl.innerHTML = "Session Storage: <b>Same ❌</b>";
   } else {
-    sessionStorageEl.innerHTML = "Session Storage: <b>Different</b>";
+    sessionStorageEl.innerHTML = "Session Storage: <b>Different ✅</b>";
   }
 
   // Timezone
   if (deepEqual(data[0].components.timezone, data[1].components.timezone)) {
-    timezoneEl.innerHTML = "Timezone: <b>Same</b>";
+    timezoneEl.innerHTML = "Timezone: <b>Same ❌</b>";
   } else {
-    timezoneEl.innerHTML = "Timezone: <b>Different</b>";
+    timezoneEl.innerHTML = "Timezone: <b>Different ✅</b>";
   }
 
   // Touch Support
   if (
     deepEqual(data[0].components.touchSupport, data[1].components.touchSupport)
   ) {
-    touchSupportEl.innerHTML = "Touch Support: <b>Same</b>";
+    touchSupportEl.innerHTML = "Touch Support: <b>Same ❌</b>";
   } else {
-    touchSupportEl.innerHTML = "Touch Support: <b>Different</b>";
+    touchSupportEl.innerHTML = "Touch Support: <b>Different ✅</b>";
   }
 
   // Vendor
   if (deepEqual(data[0].components.vendor, data[1].components.vendor)) {
-    vendorEl.innerHTML = "Vendor: <b>Same</b>";
+    vendorEl.innerHTML = "Vendor: <b>Same ❌</b>";
   } else {
-    vendorEl.innerHTML = "Vendor: <b>Different</b>";
+    vendorEl.innerHTML = "Vendor: <b>Different ✅</b>";
   }
 
   // Vendor Flavour
@@ -352,8 +375,8 @@ function report() {
       data[1].components.vendorFlavour
     )
   ) {
-    vendorFlavoursEl.innerHTML = "Vendor Flavour: <b>Same</b>";
+    vendorFlavoursEl.innerHTML = "Vendor Flavour: <b>Same ❌</b>";
   } else {
-    vendorFlavoursEl.innerHTML = "Vendor Flavour: <b>Different</b>";
+    vendorFlavoursEl.innerHTML = "Vendor Flavour: <b>Different ✅</b>";
   }
 }

@@ -1,0 +1,23 @@
+body {
+  margin: 32px;
+
+  font-family: "Montserrat", sans-serif;
+
+  background-color: #333333;
+  color: #ffffff;
+}
+
+.fp-result-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+
+#fpframe {
+  border: none;
+  width: 100%;
+  height: 500px;
+}
+
+h1 {
+  text-align: center;
+}

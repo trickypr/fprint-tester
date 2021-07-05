@@ -8,10 +8,6 @@ const fpChannel = new BroadcastChannel("fingerprint");
 fpPromise
   .then((fp) => fp.get())
   .then((result) => {
-    // This is the visitor identifier:
-    const visitorId = result.visitorId;
-    console.log(result);
-
     // Send the fingerprinting data on the broadcast channel.
     fpChannel.postMessage(result);
     // Allow for garbage collection to stop a memory leak.

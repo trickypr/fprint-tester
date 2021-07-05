@@ -3,51 +3,71 @@
    (meta name="viewport" content="width=device-width, initial-scale=1.0")
    
    (title "fprint")
+
+   (link rel="stylesheet" href="./style.css")
+
+   '<link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">'
 )
 (body
-   (h1 "FPrint benchmarker")
-   (p 
+   (h2 "FPrint benchmarker")
+   (p
         "Lets benchmark how resistive your browser is to fingerprinting! To ensure"
         "your fingerprint cannot be used to track you, ensure that most objects used"
-        "for fingerprinting differ between webpages and thus iframes"
-    )
-
-   (iframe id="fpframe")
+        "for fingerprinting differ between webpages and thus iframes."
+   )
 
    (div id="fp-result" class="fp-result"
-        (h1 id="stable" "Checking to see if you have a stable fingerprint")
-        (p id="audio" "Audio: ...")
-        (p id="canvas" "Canvas: ...")
-        (p id="colorDepth" "Color depth: ...")
-        (p id="colorGaumut" "Color gamut: ...")
-        (p id="contrast" "Contrast: ...")
-        (p id="cookiesEnabled" "Cookies enabled: ...")
-        (p id="cpuClass" "CPU class: ...")
-        (p id="deviceMemory" "Device memory: ...")
-        (p id="domBlockers" "DOM blockers: ...")
-        (p id="fontPreferences" "Font preferences: ...")
-        (p id="fonts" "Fonts: ...")
-        (p id="forcedColors" "Forced colors: ...")
-        (p id="hardwareConcurrency" "Hardware concurrency: ...")
-        (p id="hdr" "HDR: ...")
-        (p id="indexedDB" "Indexed DB: ...")
-        (p id="invertedColors" "Inverted colors: ...")
-        (p id="languages" "Languages: ...")
-        (p id="localStorage" "Local storage: ...")
-        (p id="math" "Math: ...")
-        (p id="monochrome" "Monochrome: ...")
-        (p id="osCpu" "Operating system CPU: ...")
-        (p id="platform" "Platform: ...")
-        (p id="plugins" "Plugins: ...")
-        (p id="reducedMotion" "Reduced motion: ...")
-        (p id="screenFrame" "Screen frame: ...")
-        (p id="screenResolution" "Screen resolution: ...")
-        (p id="sessionStorage" "Session storage: ...")
-        (p id="timezone" "Timezone: ...")
-        (p id="touchSupport" "Touch support: ...")
-        (p id="vendor" "Vendor: ...")
-        (p id="vendorFlavours" "Vendor flavours: ...")
+         (h1 id="stable" "Checking to see if you have a stable fingerprint")
+         (p
+            "Use these resuts to drive development of your web browser. The more that change between instances, the better."
+            " For more information, please open the browser console."
+         )
+
+         (h3 "Easy improvements")
+         (div class="fp-result-grid"
+            (p id="audio" "Audio: ...")
+            (p id="canvas" "Canvas: ...")
+            (p id="cpuClass" "CPU class: ...")
+            (p id="deviceMemory" "Device memory: ...")
+            (p id="domBlockers" "DOM blockers: ...")
+            (p id="fontPreferences" "Font preferences: ...")
+            (p id="fonts" "Fonts: ...")
+            (p id="languages" "Languages: ...")
+            (p id="hardwareConcurrency" "Hardware concurrency: ...")
+            (p id="math" "Math: ...")
+            (p id="osCpu" "Operating system CPU: ...")
+            (p id="plugins" "Plugins: ...")
+            (p id="vendor" "Vendor: ...")
+            (p id="vendorFlavours" "Vendor flavours: ...")
+         )
+
+         (h3 "Hard improvements")
+         (div class="fp-result-grid"
+            (p id="colorDepth" "Color depth: ...")
+            (p id="colorGaumut" "Color gamut: ...")
+            (p id="contrast" "Contrast: ...")
+            (p id="cookiesEnabled" "Cookies enabled: ...")
+            (p id="forcedColors" "Forced colors: ...")
+            (p id="hdr" "HDR: ...")
+            (p id="indexedDB" "Indexed DB: ...")
+            (p id="invertedColors" "Inverted colors: ...")
+            (p id="localStorage" "Local storage: ...")
+            (p id="monochrome" "Monochrome: ...")
+            (p id="platform" "Platform: ...")
+            (p id="reducedMotion" "Reduced motion: ...")
+            (p id="screenFrame" "Screen frame: ...")
+            (p id="screenResolution" "Screen resolution: ...")
+            (p id="sessionStorage" "Session storage: ...")
+            (p id="timezone" "Timezone: ...")
+            (p id="touchSupport" "Touch support: ...")
+         )
    )
+
+   (p "This webpage creates unique (or, if your browser is good, not unique) user IDs based on browser settings")
+
+   (iframe id="fpframe")
 
    // Polyfill
     (import "https://cdn.jsdelivr.net/npm/broadcastchannel-polyfill@1.0.1/index.min.js")

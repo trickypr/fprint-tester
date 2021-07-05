@@ -7,6 +7,6 @@
     "build": "mld build"
   },
   "devDependencies": {
-    "mld": "1.0.0-a.4"
+    "mld": "1.0.0-a.6"
   }
 }
